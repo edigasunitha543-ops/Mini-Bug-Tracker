@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Mini Bug Tracker{% endblock %}
+{% block content %}
+<div class="card">
+    <h1 id="dashboard-heading">Bug Dashboard</h1>
+    <p>Welcome, {{ session.get('username') }}.</p>
+    <div class="stats">
+        <div class="stat"><div class="number" id="count-total">{{ counts.total }}</div>Total Bugs</div>
+        <div class="stat"><div class="number" id="count-open">{{ counts.open }}</div>Open</div>
+        <div class="stat"><div class="number" id="count-in-progress">{{ counts.in_progress }}</div>In Progress</div>
+        <div class="stat"><div class="number" id="count-resolved">{{ counts.resolved }}</div>Resolved</div>
+        <div class="stat"><div class="number" id="count-closed">{{ counts.closed }}</div>Closed</div>
+    </div>
+    <a class="btn" href="{{ url_for('create_bug') }}">Create New Bug</a>
+    <a class="btn" href="{{ url_for('bugs') }}">View All Bugs</a>
+</div>
+{% endblock %}

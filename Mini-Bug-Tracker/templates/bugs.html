@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Bugs - Mini Bug Tracker{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>All Bugs</h1>
+    <form method="GET" action="{{ url_for('bugs') }}" class="filters">
+        <div>
+            <label for="search-input">Search by title</label>
+            <input type="text" id="search-input" name="search" value="{{ search }}">
+        </div>
+        <div>
+            <label for="filter-status">Status</label>
+            <select id="filter-status" name="status">
+                <option value="">All</option>
+                {% for st in statuses %}<option value="{{ st }}" {% if st == selected_status %}selected{% endif %}>{{ st }}</option>{% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="filter-severity">Severity</label>
+            <select id="filter-severity" name="severity">
+                <option value="">All</option>
+                {% for s in severities %}<option value="{{ s }}" {% if s == selected_severity %}selected{% endif %}>{{ s }}</option>{% endfor %}
+            </select>
+        </div>
+        <button type="submit" id="search-button">Search</button>
+    </form>
+
+    <table id="bugs-table">
+        <thead>
+            <tr>
+                <th>ID</th><th>Title</th><th>Severity</th><th>Priority</th>
+                <th>Status</th><th>Tester</th><th>Created</th><th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bug in bugs %}
+            <tr class="bug-row">
+                <td>{{ bug['id'] }}</td>
+                <td class="bug-title">{{ bug['title'] }}</td>
+                <td class="bug-severity">{{ bug['severity'] }}</td>
+                <td class="bug-priority">{{ bug['priority'] }}</td>
+                <td class="bug-status">{{ bug['status'] }}</td>
+                <td>{{ bug['tester_name'] }}</td>
+                <td>{{ bug['created_at'] }}</td>
+                <td><a class="update-link" href="{{ url_for('update_bug', bug_id=bug['id']) }}">Update</a></td>
+            </tr>
+            {% else %}
+            <tr><td colspan="8" id="no-bugs">No bugs found</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

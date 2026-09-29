@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mini Bug Tracker{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if session.get('logged_in') %}
+    <nav>
+        <a id="nav-dashboard" href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a id="nav-create-bug" href="{{ url_for('create_bug') }}">Create Bug</a>
+        <a id="nav-bugs" href="{{ url_for('bugs') }}">View Bugs</a>
+        <span class="spacer"></span>
+        <a id="nav-logout" href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    {% endif %}
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div id="flash-message" class="message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

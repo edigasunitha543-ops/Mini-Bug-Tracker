@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Update Bug - Mini Bug Tracker{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>Update Bug #{{ bug['id'] }}</h1>
+    <p><strong>Title:</strong> <span id="bug-title">{{ bug['title'] }}</span></p>
+    <p><strong>Description:</strong> {{ bug['description'] }}</p>
+    <p><strong>Current Status:</strong> <span id="current-status">{{ bug['status'] }}</span></p>
+    <form method="POST" action="{{ url_for('update_bug', bug_id=bug['id']) }}">
+        <label for="status">New Status</label>
+        <select id="status" name="status">
+            {% for st in statuses %}<option value="{{ st }}" {% if st == bug['status'] %}selected{% endif %}>{{ st }}</option>{% endfor %}
+        </select>
+        <button type="submit" id="update-button">Update Status</button>
+    </form>
+</div>
+{% endblock %}

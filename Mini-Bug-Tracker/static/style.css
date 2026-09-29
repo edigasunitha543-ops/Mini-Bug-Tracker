@@ -1,0 +1,27 @@
+* { box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: #f4f6f8; color: #222; }
+nav { background: #1f3a5f; padding: 12px 24px; display: flex; gap: 20px; align-items: center; }
+nav a { color: #fff; text-decoration: none; font-size: 15px; }
+nav a:hover { text-decoration: underline; }
+nav .spacer { flex: 1; }
+.container { max-width: 950px; margin: 24px auto; padding: 0 16px; }
+.card { background: #fff; border-radius: 6px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+.login-card { max-width: 380px; margin: 80px auto; }
+h1, h2 { margin-top: 0; }
+label { display: block; margin: 12px 0 4px; font-weight: bold; font-size: 14px; }
+input[type=text], input[type=password], select, textarea { width: 100%; padding: 8px; border: 1px solid #bbb; border-radius: 4px; font-size: 14px; }
+textarea { height: 90px; }
+button, .btn { background: #1f3a5f; color: #fff; border: 0; padding: 9px 18px; border-radius: 4px; cursor: pointer; font-size: 14px; text-decoration: none; display: inline-block; margin-top: 16px; }
+button:hover, .btn:hover { background: #2c5282; }
+.message { padding: 10px 14px; border-radius: 4px; margin-bottom: 16px; }
+.success { background: #d4edda; color: #155724; }
+.error { background: #f8d7da; color: #721c24; }
+.stats { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+.stat { background: #eef2f7; padding: 14px 20px; border-radius: 6px; min-width: 120px; text-align: center; }
+.stat .number { font-size: 26px; font-weight: bold; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 16px; }
+.filters div { flex: 1; min-width: 150px; }
+.filters button { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+th { background: #eef2f7; }

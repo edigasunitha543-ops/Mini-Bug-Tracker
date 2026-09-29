@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Login - Mini Bug Tracker{% endblock %}
+{% block content %}
+<div class="card login-card">
+    <h1>Login</h1>
+    {% if error %}<div id="error-message" class="message error">{{ error }}</div>{% endif %}
+    <form method="POST" action="{{ url_for('login') }}">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <button type="submit" id="login-button">Login</button>
+    </form>
+</div>
+{% endblock %}

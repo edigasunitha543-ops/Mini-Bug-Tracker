@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Create Bug - Mini Bug Tracker{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>Create New Bug</h1>
+    {% if error %}<div id="error-message" class="message error">{{ error }}</div>{% endif %}
+    <form method="POST" action="{{ url_for('create_bug') }}" novalidate>
+        <label for="title">Bug Title</label>
+        <input type="text" id="title" name="title">
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+
+        <label for="severity">Severity</label>
+        <select id="severity" name="severity">
+            <option value="">-- Select Severity --</option>
+            {% for s in severities %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+        </select>
+
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+            <option value="">-- Select Priority --</option>
+            {% for p in priorities %}<option value="{{ p }}">{{ p }}</option>{% endfor %}
+        </select>
+
+        <label for="status">Status</label>
+        <select id="status" name="status">
+            <option value="">-- Select Status --</option>
+            {% for st in statuses %}<option value="{{ st }}">{{ st }}</option>{% endfor %}
+        </select>
+
+        <label for="tester_name">Tester Name</label>
+        <input type="text" id="tester_name" name="tester_name">
+
+        <button type="submit" id="submit-bug">Submit Bug</button>
+    </form>
+</div>
+{% endblock %}
